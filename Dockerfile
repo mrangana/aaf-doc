@@ -32,6 +32,7 @@ RUN apt-get -y update && \
 RUN apt-get -y install libgcrypt20-dev
 
 RUN git clone https://github.com/tpm2-software/tpm2-tss.git
+RUN git clone https://github.com/tpm2-software/tpm2-abrmd.git
 RUN git clone https://github.com/tpm2-software/tpm2-tools.git
 
 RUN cd tpm2-tss && \
@@ -41,6 +42,16 @@ RUN cd tpm2-tss && \
   make && \
   make install
 
+RUN cd tpm2-abrmd && \
+  git checkout 1.1.1 && \
+  useradd --system --user-group tss && \
+  ./bootstrap && \
+  ./configure --with-dbuspolicydir=/etc/dbus-1/system.d \
+    --with-udevrulesdir=/etc/udev/rules.d/ \
+    --with-systemdsystemunitdir=/lib/systemd/system && \
+  make && \
+  make install
+  
 RUN cd tpm2-tools && \
   git checkout 2.1.0 && \
   ./bootstrap && \
