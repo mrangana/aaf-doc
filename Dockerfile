@@ -62,12 +62,12 @@ RUN cd tpm2-tools && \
 RUN echo "/usr/local/lib" > /etc/ld.so.conf.d/tpm2.conf && \
   ldconfig
 
-RUN git clone https://github.com/openssl/openssl.git
-RUN cd openssl && \
-  git checkout OpenSSL_1_1_0-stable && \
-  ./config
-RUN cd openssl && make
-RUN cd openssl && make test
-RUN cd openssl && make install
-RUN apt-get -y remove --purge openssl
+RUN wget https://www.openssl.org/source/openssl-1.1.0.tar.gz
+RUN gzip -d openssl-1.1.0.tar.gz
+RUN tar -xvf openssl-1.1.0.tar
+RUN cd openssl-1.1.0 && \
+    ./config && \
+    make && \
+    make install
+
 RUN openssl version -v
