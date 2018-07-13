@@ -69,5 +69,7 @@ RUN cd openssl-1.1.0 && \
     ./config && \
     make && \
     make install
-
+    
+RUN echo "/usr/local/lib" > /etc/ld.so.conf.d/openssl.conf && \
+  ldconfig
 RUN openssl version -v
