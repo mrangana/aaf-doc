@@ -74,3 +74,4 @@ RUN mv ./bcprov-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
 RUN mv ./bcmail-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
 RUN mv ./bcpg-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
 RUN mv ./bctls-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext
+RUN mv ./bctest-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext
