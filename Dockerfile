@@ -26,6 +26,7 @@ RUN apt-get -y update && \
     liburiparser-dev \
     libssl-dev \
     pandoc \
+    softhsm2 \
     opensc \
     default-jdk 
 
@@ -62,3 +63,14 @@ RUN cd tpm2-tools && \
 RUN echo "/usr/local/lib" > /etc/ld.so.conf.d/tpm2.conf && \
   ldconfig
 
+RUN wget https://www.bouncycastle.org/download/bcprov-jdk15on-159.jar
+RUN wget https://www.bouncycastle.org/download/bcpkix-jdk15on-159.jar
+RUN wget https://www.bouncycastle.org/download/bcmail-jdk15on-159.jar
+RUN wget https://www.bouncycastle.org/download/bcpg-jdk15on-159.jar
+RUN wget https://www.bouncycastle.org/download/bctls-jdk15on-159.jar
+RUN wget https://www.bouncycastle.org/download/bctest-jdk15on-159.jar
+RUN cp ./bcpkix-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
+RUN cp ./bcprov-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
+RUN cp ./bcmail-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
+RUN cp ./bcpg-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
+RUN cp ./bctls-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext
