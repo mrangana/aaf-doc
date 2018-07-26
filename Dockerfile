@@ -62,16 +62,3 @@ RUN cd tpm2-tools && \
 
 RUN echo "/usr/local/lib" > /etc/ld.so.conf.d/tpm2.conf && \
   ldconfig
-
-RUN wget https://www.bouncycastle.org/download/bcprov-jdk15on-159.jar
-RUN wget https://www.bouncycastle.org/download/bcpkix-jdk15on-159.jar
-RUN wget https://www.bouncycastle.org/download/bcmail-jdk15on-159.jar
-RUN wget https://www.bouncycastle.org/download/bcpg-jdk15on-159.jar
-RUN wget https://www.bouncycastle.org/download/bctls-jdk15on-159.jar
-RUN wget https://www.bouncycastle.org/download/bctest-jdk15on-159.jar
-RUN mv ./bcpkix-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
-RUN mv ./bcprov-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
-RUN mv ./bcmail-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
-RUN mv ./bcpg-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext/
-RUN mv ./bctls-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext
-RUN mv ./bctest-jdk15on-159.jar /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext
